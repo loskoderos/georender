@@ -4,11 +4,12 @@ import { Map, View } from "ol";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
 import { Vector as VectorSource } from "ol/source.js";
 import { fromLonLat } from 'ol/proj.js';
+import { Importer } from "./importer.js";
 import * as fs from 'fs';
 
 export class Renderer {
   async render(options) {
-    await new Promise((resolve, reject) => {
+    await new Promise(async (resolve, reject) => {
       console.log('Rendering...');
 
       const width = options.width || defaults.width;
@@ -17,6 +18,7 @@ export class Renderer {
       const outputFile = options.out || "out.png";
       const source = defaults.source.osm;
       const style = defaults.style;
+      const padding = defaults.padding;
   
       console.log('  width:', width);
       console.log('  height:', height);
@@ -40,11 +42,18 @@ export class Renderer {
       });
       map.addLayer(featureLayer);
 
-      const view = new View({
-        center: fromLonLat([-0.000530, 51.476847]),
-        zoom: 12
+      const view = new View();
+      map.setView(view); 
+      
+      const importer = new Importer();
+      inputFiles.forEach(filename => {
+        featureSource.addFeatures(importer.importFile(filename));
       });
-      map.setView(view);  
+
+      view.fit(featureSource.getExtent(), {
+        size: map.getSize(),
+        padding
+      });
 
       map.on('postrender', async () => process.stdout.write("."));
 
