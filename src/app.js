@@ -41,7 +41,9 @@ export class Application {
         console.log('No output file');
         return -1;
       }
-      if (!args.values.out.endsWith('.png') && !args.values.out.endsWith('.jpg')) {
+      if (!args.values.out.toLowerCase().endsWith('.png') && 
+          !args.values.out.toLowerCase().endsWith('.jpg') &&
+          !args.values.out.toLowerCase().endsWith('.jpeg')) {
         throw new Error("Output file must be either .png or .jpg");
         return -1;
       }
