@@ -46,9 +46,9 @@ export class Renderer {
         map.setView(view); 
         
         const importer = new Importer();
-        inputFiles.forEach(filename => {
-          featureSource.addFeatures(importer.importFile(filename));
-        });
+        for (let i = 0; i < inputFiles.length; i++) {
+          featureSource.addFeatures(await importer.importFile(inputFiles[i]));
+        }
   
         view.fit(featureSource.getExtent(), {
           size: map.getSize(),
@@ -70,7 +70,8 @@ export class Renderer {
         map.renderSync();
   
       } catch (err) {
-        reject(err);
+        //reject(err);
+        throw err;
       }
     })
     .then(() => console.log("Done!"))
