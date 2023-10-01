@@ -53,7 +53,12 @@ export class Renderer {
         clearTimeout(timeout);
 
         const canvas = await this._processCanvas(map);
-        await this._saveCanvasToFile(canvas, outputFile, 'image/png');
+        if (outputFile.endsWith('.png'))
+          await this._saveImage(canvas, outputFile, 'image/png');
+        else if (outputFile.endsWith('.jpg'))
+          await this._saveImage(canvas, outputFile, 'image/jpeg');
+        else
+          throw new Error("Only PNG and JPEG output files are supported");
 
         resolve();
       })
@@ -71,7 +76,7 @@ export class Renderer {
     return canvases[0];
   }
 
-  async _saveCanvasToFile(canvas, filename, mimetype) {
+  async _saveImage(canvas, filename, mimetype) {
     return new Promise((resolve, reject) => {
       canvas.toBlob(
         blob => { 
