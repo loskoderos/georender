@@ -53,7 +53,7 @@ export class Renderer {
         clearTimeout(timeout);
 
         const canvas = await this._processCanvas(map);
-        await this._saveCanvasToFile(canvas, outputFile);
+        await this._saveCanvasToFile(canvas, outputFile, 'image/png');
 
         resolve();
       })

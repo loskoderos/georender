@@ -1,5 +1,6 @@
 /node_modules
-.log
-.bak
-.tmp
-.png
+/*.log
+/*.bak
+/*.tmp
+/*.png
+/*.jpg
