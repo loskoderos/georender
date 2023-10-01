@@ -91,6 +91,10 @@ export const document = window.document;
     Object.defineProperty(global, 'Image', { value: window.Image });
   if (!Object.getOwnPropertyDescriptor(global, 'FileReader'))
     Object.defineProperty(global, 'FileReader', { value: window.FileReader });
+  if (!Object.getOwnPropertyDescriptor(global, 'DOMParser'))
+    Object.defineProperty(global, 'DOMParser', { value: window.DOMParser });
+  if (!Object.getOwnPropertyDescriptor(global, 'Node'))
+    Object.defineProperty(global, 'Node', { value: window.Node });
 
   // Override all remaing properties.
   for (const p of Object.keys(Object.getOwnPropertyDescriptors(window)).filter(p => p.startsWith('HTML')))

@@ -3,17 +3,17 @@ import { Renderer } from './renderer.js';
 
 const help = '\
 Usage: georender [options] \n \
-  --width <px> - Image width in pixels\n \
-  --height <px> - Image height in pixels\n \
-  --in <input file>, --in ... - Path to input file (.geojson, .gpx, .kml, .kmz)\n \
-  --out <output file> - Path to output file (.png or .jpg)\n \
+  -w, --width <px> - Image width in pixels\n \
+  -h, --height <px> - Image height in pixels\n \
+  -i, --in <input file>, --in ... - Path to input file (.geojson, .gpx, .kml, .kmz)\n \
+  -o, --out <output file> - Path to output file (.png or .jpg)\n \
 ';
 
 const options = {
-  'width': { type: 'string' },
-  'height': { type: 'string' },
-  'in': { type: 'string', multiple: true },
-  'out': { type: 'string' }
+  'width': { type: 'string', short: 'w' },
+  'height': { type: 'string', short: 'h' },
+  'in': { type: 'string', short: 'i', multiple: true },
+  'out': { type: 'string', short: 'o' }
 };
 
 export class Application {
