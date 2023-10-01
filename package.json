@@ -8,5 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukasz Cepowski <lukasz@cepowski.com> (https://loskoderos.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "jsdom": "^22.1.0",
+    "jszip": "^3.10.1",
+    "ol": "^8.1.0"
+  }
 }

@@ -1,19 +1,25 @@
 import { parseArgs } from 'node:util';
+import { Renderer } from './renderer.js';
 
 const help = '\
-Usage: georender --width <w> --height <h>\n \
-  --width  - Image width in pixels, default 500px\n \
-  --height - Image height in pixels, default 500px\n \
+Usage: georender [options] \n \
+  --width <px> - Image width in pixels\n \
+  --height <px> - Image height in pixels\n \
+  --in <input file>, --in ... - Path to input file (.geojson, .gpx, .kml, .kmz)\n \
+  --out <output file> - Path to output file (.png or .jpg)\n \
 ';
 
 const options = {
-  'width': { type: 'string', default: '500' },
-  'height': { type: 'string', default: '500' },
+  'width': { type: 'string' },
+  'height': { type: 'string' },
+  'in': { type: 'string', multiple: true },
+  'out': { type: 'string' }
 };
 
-class Application {
+export class Application {
   constructor(args) {
     this.args = args;
+    this.renderer = new Renderer();
   }
 
   async run() {
@@ -21,12 +27,32 @@ class Application {
 
     if (this.args.length == 0) {
       console.log(help);
-      return;
+      return -1;
     }
 
-    const args = parseArgs({ options, args: this.args });
-    console.log(args);
+    let args;
+    try {
+      args = parseArgs({ options, args: this.args });
+      if (!args.values.in) {
+        console.log('No input files');
+        return -1;
+      }
+      if (!args.values.out) {
+        console.log('No output file');
+        return -1;
+      }
+    } catch (err) {
+      console.error(err.message);
+      return -1;
+    }
+
+    await this.renderer.render({
+      width: +args.values.width,
+      height: +args.values.height,
+      in: args.values.in,
+      out: args.values.out
+    });
+
+    return 0;
   }
 }
-
-export { Application };
