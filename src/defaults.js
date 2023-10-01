@@ -50,5 +50,5 @@ export const defaults = {
     })  
   ],
   padding: [50, 50, 50, 50],
-  timeout: 5
+  timeout: 30
 };
