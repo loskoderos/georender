@@ -16,7 +16,7 @@ export class Renderer {
         const height = options.height || defaults.height;
         const inputFiles = options.in || [];
         const outputFile = options.out || "out.png";
-        const source = defaults.source.osm;
+        const tile = defaults.tile[options.tile || 'osm'];
         const style = defaults.style;
         const padding = defaults.padding;
     
@@ -33,7 +33,7 @@ export class Renderer {
         document.body.appendChild(element);
     
         const map = new Map({ target: element });
-        map.addLayer(new TileLayer({ source }));
+        map.addLayer(new TileLayer({ source: tile }));
     
         const featureSource = new VectorSource();
         const featureLayer = new VectorLayer({
@@ -70,8 +70,7 @@ export class Renderer {
         map.renderSync();
   
       } catch (err) {
-        //reject(err);
-        throw err;
+        reject(err);
       }
     })
     .then(() => console.log("Done!"))

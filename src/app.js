@@ -7,13 +7,15 @@ Usage: georender [options] \n \
   -h, --height <px> - Image height in pixels\n \
   -i, --in <input file>, --in ... - Path to input file (.geojson, .gpx, .kml, .kmz)\n \
   -o, --out <output file> - Path to output file (.png or .jpg)\n \
+  -t, --tile <name> - Name of the tile source [osm, otm, esri]\n \
 ';
 
 const options = {
   'width': { type: 'string', short: 'w' },
   'height': { type: 'string', short: 'h' },
   'in': { type: 'string', short: 'i', multiple: true },
-  'out': { type: 'string', short: 'o' }
+  'out': { type: 'string', short: 'o' },
+  'tile': { type: 'string', short: 't' },
 };
 
 export class Application {
@@ -56,7 +58,8 @@ export class Application {
       width: +args.values.width,
       height: +args.values.height,
       in: args.values.in,
-      out: args.values.out
+      out: args.values.out,
+      tile: args.values.tile,
     });
 
     return 0;

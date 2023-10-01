@@ -1,4 +1,4 @@
-import { OSM } from 'ol/source.js';
+import { OSM, XYZ } from 'ol/source.js';
 import { Style, Icon, Circle, Fill, Stroke } from 'ol/style.js'
 
 const white   = 'rgba(255, 255, 255, 0.85)';
@@ -7,10 +7,20 @@ const blue    = '#1267FF';
 export const defaults = {
   width: 500,
   height: 500,
-  source: {
+  tile: {
     osm: new OSM({
       url: 'https://cdn.devgrid.net/osm/{z}/{x}/{y}.png',
       crossOrigin: 'anonymous'
+    }),
+    otm: new XYZ({
+      url: 'https://cdn.devgrid.net/otm/{z}/{x}/{y}.png',
+      maxZoom: 17,
+      crossOrigin: 'anonymous'
+    }),
+    esri: new XYZ({
+      url: 'https://server.arcgisonline.com//ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      maxZoom: 23,
+      crossOrigin: 'anonymous' 
     })
   },
   style: [
