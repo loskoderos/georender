@@ -2,7 +2,7 @@
   "name": "georender",
   "version": "0.0.0",
   "description": "Georender is a command line utility to render GPS data as image.",
-  "main": "src/main.js",
+  "main": "src/module.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
