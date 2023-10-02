@@ -9,9 +9,6 @@ Following input data formats are supported:
 - GPX
 - KML / KMZ
 
-Georender can render multiple input files at once to an image of specified width and height in pixels.
-You can select the tile source and modify style (see defaults.js).
-
 ## Examples
 Following images are generated from GPX tracks from [TransEuroTrail](https://transeurotrail.org/) for Finland, Norway and Sweden.
 
@@ -20,6 +17,19 @@ Render GPX on OpenStreetMap
 ~~~
 ./georender -w 1024 -h 1024 -i FIN.gpx -i N.gpx -i S.gpx -o samples/1.jpg -t osm
 ~~~
+
+Render GPX on OpenTopoMap
+![](samples/2.jpg)
+~~~
+./georender -w 1024 -h 1024 -i FIN.gpx -i N.gpx -i S.gpx -o samples/2.jpg -t otm
+~~~
+
+Render GPX on ESRI World Imagery
+![](samples/3.jpg)
+~~~
+./georender -w 1024 -h 1024 -i FIN.gpx -i N.gpx -i S.gpx -o samples/3.jpg -t esri
+~~~
+
 
 ## How to use it?
 Checkout this repository and install dependencies with:
@@ -39,6 +49,17 @@ You should get the following image:
 ## How does it work?
 Georender is built with OpenLayers, server side rendering (SSR) is implemented with JSDom.
 Application creates a virtual DOM structure to allow OpenLayers render a map. The DOM is monkey patched for missing dependencies to make it work. Once completed the canvas is saved to the output image.
+
+## Options
+Georender can be run with following options:
+- `-w, --width <px>` - Image width in pixels
+- `-h, --height <px>` - Image height in pixels
+- `-i, --in <input file` - Path to input file (.geojson, .gpx, .kml, .kmz), supports multiple files
+- `-o, --out <output file` - Name of the output file (.png, .jpg, .jpeg)
+- `-t, --tile <name>` - Name of the tile source (osm, otm, esri)
+
+## Customization
+You can change default settings by editing `defaults.js`.
 
 ## Credits
 - [GPXLAB](https://gpxlab.net)
