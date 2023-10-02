@@ -54,8 +54,8 @@ Application creates a virtual DOM structure to allow OpenLayers render a map. Th
 Georender can be run with following options:
 - `-w, --width <px>` - Image width in pixels
 - `-h, --height <px>` - Image height in pixels
-- `-i, --in <input file` - Path to input file (.geojson, .gpx, .kml, .kmz), supports multiple files
-- `-o, --out <output file` - Name of the output file (.png, .jpg, .jpeg)
+- `-i, --in <input file>` - Path to input file (.geojson, .gpx, .kml, .kmz), supports multiple files
+- `-o, --out <output file>` - Name of the output file (.png, .jpg, .jpeg)
 - `-t, --tile <name>` - Name of the tile source (osm, otm, esri)
 
 ## Customization
