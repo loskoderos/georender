@@ -61,6 +61,14 @@ Georender can be run with following options:
 ## Customization
 You can change default settings by editing `defaults.js`.
 
+## Notes
+- To install Georender on Mac M1 chip you may need to run the following command to install Canvas dependencies:
+~~~
+brew install pkg-config cairo pango libpng jpeg giflib librsvg
+~~~
+- OpenLayers may use multiple Canvas elements to render a map, however in tests it seems in Node.js only one Canvas is used so the Renderer code is simplified.
+- There seems to be a bug in OpenLayers while importing KMZ resulting in ERR_INVALID_URL while Icon href is being parsed pointing to internals of the ZIP file.
+
 ## Credits
 - [GPXLAB](https://gpxlab.net)
 - [OpenStreetMap](https://www.openstreetmap.org/)
