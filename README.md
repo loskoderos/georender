@@ -61,6 +61,19 @@ Georender can be run with following options:
 ## Customization
 You can change default settings by editing `defaults.js`.
 
+## Docker
+Georender can work in headless mode in Docker, however due to Canvas usage there are some extra dependencies that need to be installed, see Dockerfile.
+
+Build docker container:
+~~~
+docker build -t georender .
+~~~
+
+Run Georender in docker:
+~~~
+docker run -v ./:/local georender -i /local/samples/vesuvio.gpx -o /local/out.png
+~~~
+
 ## Notes
 - To install Georender on Mac M1 chip you may need to run the following command to install Canvas dependencies:
 ~~~

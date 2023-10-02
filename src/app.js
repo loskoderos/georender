@@ -1,5 +1,6 @@
 import { parseArgs } from 'node:util';
 import { Renderer } from './renderer.js';
+import { Canvas } from 'canvas';
 
 const help = '\
 Usage: georender [options] \n \
