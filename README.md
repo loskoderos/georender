@@ -15,6 +15,7 @@ You can select the tile source and modify style (see defaults.js).
 ## Examples
 Following images are generated from GPX tracks from [TransEuroTrail](https://transeurotrail.org/) for Finland, Norway and Sweden.
 
+Render GPX on OpenStreetMap
 ![](samples/1.jpg)
 ~~~
 ./georender -w 1024 -h 1024 -i FIN.gpx -i N.gpx -i S.gpx -o samples/1.jpg -t osm
@@ -40,6 +41,10 @@ Georender is built with OpenLayers, server side rendering (SSR) is implemented w
 Application creates a virtual DOM structure to allow OpenLayers render a map. The DOM is monkey patched for missing dependencies to make it work. Once completed the canvas is saved to the output image.
 
 ## Credits
+- [GPXLAB](https://gpxlab.net)
+- [OpenStreetMap](https://www.openstreetmap.org/)
+- [OpenTopoMap](https://opentopomap.org/)
+- [ESRI World Imagery](https://hub.arcgis.com/datasets/esri::world-imagery/about)
 - [OpenLayers](https://github.com/openlayers/openlayers)
 - [JSDom](https://github.com/jsdom/jsdom)
 - [JSZip](https://github.com/Stuk/jszip)
