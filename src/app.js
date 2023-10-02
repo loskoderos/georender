@@ -15,7 +15,7 @@ const options = {
   'height': { type: 'string', short: 'h' },
   'in': { type: 'string', short: 'i', multiple: true },
   'out': { type: 'string', short: 'o' },
-  'tile': { type: 'string', short: 't' },
+  'tile': { type: 'string', short: 't', default: 'osm' },
 };
 
 export class Application {
