@@ -25,11 +25,18 @@ Render sample GPX file with Georender:
 ~~~
 
 You should get the following image:
+
 ![](samples/vesuvio.png)
 
 ## How does it work?
 Georender is built with OpenLayers, server side rendering (SSR) is implemented with JSDom.
 Application creates a virtual DOM structure to allow OpenLayers render a map. The DOM is monkey patched for missing dependencies to make it work. Once completed the canvas is saved to the output image.
+
+## Credits
+- [OpenLayers](https://github.com/openlayers/openlayers)
+- [JSDom](https://github.com/jsdom/jsdom)
+- [JSZip](https://github.com/Stuk/jszip)
+- [ol-ssr](https://github.com/mmomtchev/ol-ssr)
 
 ## License
 MIT
