@@ -1,9 +1,10 @@
 # Georender
 
 Georender is a command line utility for rendering GPS data as image.
-Program was created for server side rendering of GPX files for [GPXLAB](https://gpxlab.net) - GPS Track Editor.
 
-Following data formats are supported:
+Application was created for server side rendering of GPX files for [GPXLAB - GPS Track Editor](https://gpxlab.net).
+
+Following input data formats are supported:
 - GeoJSON
 - GPX
 - KML / KMZ
