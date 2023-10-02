@@ -13,6 +13,12 @@ Georender can render multiple input files at once to an image of specified width
 You can select the tile source and modify style (see defaults.js).
 
 ## Examples
+Following images are generated from GPX tracks from [TransEuroTrail](https://transeurotrail.org/) for Finland, Norway and Sweden.
+
+![](samples/1.jpg)
+~~~
+./georender -w 1024 -h 1024 -i FIN.gpx -i N.gpx -i S.gpx -o samples/1.jpg -t osm
+~~~
 
 ## How to use it?
 Checkout this repository and install dependencies with:
